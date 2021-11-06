@@ -9,17 +9,13 @@ const commands = {
 };
 
 const conanCommands = {
-    gg: c_gg, get_guilds: c_gg
 };
 
 module.exports = async function (msg){
     let tokens = msg.content.split(" ");
-    let command = tokens.shift();
+    let command = tokens.shift().toLowerCase();
     
-    let guildsJson = utils.load_guilds()
-    const server_prefix = guildsJson[msg.guild.id].prefix;
-    
-    let allPrefix = [command_prefix, server_prefix]
+    let allPrefix = [command_prefix]
 
     let conan = utils.conan
 
