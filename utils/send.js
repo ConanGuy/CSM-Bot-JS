@@ -12,7 +12,7 @@ module.exports = async function (msg, kwargs){
         await msg.channel.send(kwargs);
     }
     catch(e){
-        console.log("\n"+e+"\n")
+        console.log(e)
         await msg.channel.send({content: "Unkown error"})
     }
 }

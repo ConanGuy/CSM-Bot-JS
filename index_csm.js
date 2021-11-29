@@ -12,14 +12,14 @@ const threads = require('./threads')
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-const TOKEN = process.env.TOKEN
-const DIR = process.env.DIR
+const TOKEN = process.env.TOKEN_CSM
 
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES", "DIRECT_MESSAGES"], partials: ["CHANNEL"] })
+const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES", "DIRECT_MESSAGES", "GUILD_PRESENCES"], partials: ["CHANNEL"] })
 client.login(TOKEN)
 
 client.on("ready", botReady)
 client.on("messageCreate", getMessage)
+client.on("guildMemberAdd", memberJoin)
 
 async function botReady(){
     const date = new Date();
@@ -35,5 +35,21 @@ async function getMessage(message){
     if(message.author.bot) return
     else{
         commandHandler(message);
+    }
+}
+
+async function memberJoin(member){
+    if (member.guild.id = "891000842788937748"){
+        if (member.user.bot){
+            await member.roles.add(member.guild.roles.cache.find(r => r.name == "Haas"))
+            const date = new Date();
+            console.log(`[Logs @${date.toUTCString()}] Haas added role to bot ${member.user.username}\n`);
+
+        }
+        else{
+            await member.roles.add(member.guild.roles.cache.find(r => r.name == "Pilote"))
+            const date = new Date();
+            console.log(`[Logs @${date.toUTCString()}] Pilote added role to bot ${member.user.username}\n`);
+        }
     }
 }

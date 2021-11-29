@@ -5,7 +5,5 @@ module.exports = {
     
     manage_arguments:  require("./utils/manage_arguments.js"),
 
-    SQL: require("./utils/SQL.js"),
-
     conan: null,
 }
